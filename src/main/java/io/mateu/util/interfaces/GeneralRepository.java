@@ -1,5 +1,8 @@
 package io.mateu.util.interfaces;
 
+import io.mateu.mdd.shared.interfaces.IResource;
+import io.mateu.mdd.shared.interfaces.UserPrincipal;
+
 import java.util.List;
 
 public interface GeneralRepository {
@@ -27,5 +30,5 @@ public interface GeneralRepository {
 
     void recoverPassword(String login) throws Throwable;
 
-    AuditRecord getNewAudit(String currentUserLogin) throws Throwable;
+    AuditRecord getNewAudit() throws Throwable;
 }

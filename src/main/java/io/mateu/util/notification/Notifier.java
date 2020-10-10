@@ -36,4 +36,12 @@ public class Notifier {
     public static void info(String msg) {
         Notification.show(msg, Notification.Type.HUMANIZED_MESSAGE);
     }
+
+    public static void push(String msg) {
+        Notification.show(msg, Notification.Type.HUMANIZED_MESSAGE);
+    }
+
+    public static void pushDone(String msg) {
+        Notification.show(msg, Notification.Type.HUMANIZED_MESSAGE);
+    }
 }

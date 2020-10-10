@@ -1,6 +1,6 @@
 package io.mateu.util.common;
 
-import io.mateu.mdd.core.annotations.Ignored;
+import io.mateu.mdd.shared.annotations.Ignored;
 import io.mateu.util.xml.XMLSerializable;
 import lombok.Getter;
 import lombok.Setter;

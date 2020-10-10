@@ -76,12 +76,25 @@
 
 
     <!-- https://mvnrepository.com/artifact/com.googlecode/google-api-translate-java -->
+    <!--
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-translate</artifactId>
       <version>1.26.0</version>
     </dependency>
+    -->
 
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client</artifactId>
+      <version>1.23.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client-jackson2</artifactId>
+      <version>1.23.0</version>
+    </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -242,4 +255,33 @@
 
   </dependencies>
 
+
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>mateu-central</id>
+      <url>http://nexus.mateu.io/repository/mateu-central/</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>true</uniqueVersion>
+      <id>mateu-central</id>
+      <url>http://nexus.mateu.io/repository/mateu-central/</url>
+      <layout>default</layout>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>mateu-central</id>
+      <url>http://nexus.mateu.io/repository/mateu-central</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>mateu-central</id>
+      <url>http://nexus.mateu.io/repository/mateu-central</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

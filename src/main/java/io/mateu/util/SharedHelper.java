@@ -1,7 +1,7 @@
 package io.mateu.util;
 
-import io.mateu.mdd.core.util.asciiart.Painter;
-import io.mateu.mdd.core.util.beanutils.MiURLConverter;
+import io.mateu.util.asciiart.Painter;
+import io.mateu.util.beanutils.MiURLConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.ConvertUtils;
 
@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class SharedHelper {
@@ -106,14 +107,10 @@ public class SharedHelper {
 
 
     public static <T> T getImpl(Class<T> c) throws Exception {
-        Iterator<T> impls = ServiceLoader.load(c).iterator();
-        T i = null;
-        while (impls.hasNext()) {
-            i = impls.next();
-            break;
-        }
-        if (i != null && impls.hasNext()) throw new Exception("More than 1 implementation found for " + c.getName());
-        return i;
+        List<T> impls = getImpls(c);
+        if (impls.size() == 0) throw new Exception("No implementation found for " + c.getName());
+        if (impls.size() > 1) throw new Exception("More than 1 implementation found for " + c.getName() + " (" + impls.stream().map(i -> i.getClass()).map(Class::getSimpleName).collect(Collectors.joining(",")) + ")");
+        return impls.get(0);
     }
 
     public static <T> List<T> getImpls(Class<T> c) throws Exception {
