@@ -2,12 +2,11 @@ package io.mateu.util.persistence;
 
 import io.mateu.util.Helper;
 import io.mateu.util.IJPAHelper;
+import io.mateu.util.JPAHelperImpl;
 import io.mateu.util.runnable.RunnableThrowsThrowable;
 import org.jinq.jpa.JinqJPAStreamProvider;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,9 +18,9 @@ public class JPAHelper {
     public static IJPAHelper get() {
         if (impl == null) {
             try {
-                impl = Helper.getImpl(IJPAHelper.class);
+                impl = new JPAHelperImpl();
             } catch (Exception e) {
-                System.out.println("Not able to set the implementation clas for IJPAHelper: " + e.getMessage());
+                e.printStackTrace();
             }
         }
         return impl;
